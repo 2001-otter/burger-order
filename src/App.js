@@ -1,4 +1,4 @@
-import React, { Component, Suspense, useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import { Route, Switch, withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 // import asyncComponent from "./hoc/asyncComponent/asyncComponent"; replaced with React.lazy
@@ -21,9 +21,10 @@ const Auth = React.lazy(() => {
 });
 
 const App = (props) => {
+  const { onTryAutoSignup } = props;
   useEffect(() => {
-    props.onTryAutoSignup();
-  }, []);
+    onTryAutoSignup();
+  }, [onTryAutoSignup]);
 
   let routes = (
     <Switch>
