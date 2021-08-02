@@ -15,7 +15,7 @@ const Auth = (props) => {
       elementType: "input",
       elementConfig: {
         type: "email",
-        placeholder: "Mail Address",
+        placeholder: "test@burger.com",
       },
       value: "",
       validation: {
@@ -29,7 +29,7 @@ const Auth = (props) => {
       elementType: "input",
       elementConfig: {
         type: "password",
-        placeholder: "Password",
+        placeholder: "12345678",
       },
       value: "",
       validation: {
@@ -110,15 +110,25 @@ const Auth = (props) => {
 
   return (
     <div className={classes.Auth}>
+      <h3>{!isSignup ? "SIGN IN" : "SIGN UP"}</h3>
       {authRedirect}
       {errorMessage}
       <form onSubmit={submitHandler}>
         {form}
         <Button btnType="Success">SUBMIT</Button>
       </form>
-      <Button clicked={switchAuthModeHandler} btnType="Danger">
-        SWITCH TO {isSignup ? "SIGNIN" : "SIGNUP"}
-      </Button>
+      <span
+        onClick={switchAuthModeHandler}
+        style={{
+          fontSize: "14px",
+          cursor: "pointer",
+          textDecoration: "underline",
+        }}
+      >
+        {isSignup
+          ? "Already have an account? Switch to Sign In"
+          : "Don't have an account? Switch to Sign In"}
+      </span>
     </div>
   );
 };
